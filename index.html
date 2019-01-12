@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Technical Documentation Page</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Technical Documentation Page">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Web Design,HTML,CSS">
+  <link rel="stylesheet" type="text/css" href="tech.css" media="screen">
+</head>
+
+<body>
+  <nav id="navbar">
+    <header>Bootstrap</header>
+    <ul>
+      <a class="nav-link" href="#Introduction" rel="internal"><li>Introduction</li></a>
+      <a class="nav-link" href="#Community" rel="internal"><li>Community</li></a>
+      <a class="nav-link" href="#JavaScript" rel="internal"><li>JavaScript</li></a>
+      <a class="nav-link" href="#Data_attributes" rel="internal"><li>Data attributes</li></a>
+      <a class="nav-link" href="#Via_data" rel="internal"><li>Via data</li></a>
+      <a class="nav-link" href="#Tooltips" rel="internal"><li>Tooltips</li></a>
+      <a class="nav-link" href="#Programmatic_api" rel="internal"><li>Programmatic api</li></a>
+      <a class="nav-link" href="#Functions_and_transitions" rel="internal"><li>Functions and transitions</li></a>
+      <a class="nav-link" href="#Modal" rel="internal"><li>Modal</li></a>
+      <a class="nav-link" href="#Popovers" rel="internal"><li>Popovers</li></a>
+      <a class="nav-link" href="#Package_managers" rel="internal"><li>Package managers</li></a>
+      <a class="nav-link" href="#Theming" rel="internal"><li>Theming</li></a>
+      <a class="nav-link" href="#Html_over_JS" rel="internal"><li>Html over JS</li></a>
+      <a class="nav-link" href="#Reference" rel="internal"><li>Reference</li></a>
+    </ul>
+  </nav>
+  <!-- end of Navbar & Header -->
+
+  <main id="main-doc">
+    <section class="main-section" id="Introduction">
+      <header>Introduction</header>
+      <article>
+        <p>Get started with Bootstrap, the world’s most popular framework for building responsive, mobile-first sites, with BootstrapCDN and a template starter page.</p>
+        <h4>Important Globals</h4>
+
+  <p>Bootstrap employs a handful of important global styles and settings that you’ll need to be aware of when using it, all of which are almost exclusively geared towards the normalization of cross browser styles. Let’s dive in.</p>
+
+
+  <li>Bootstrap requires the use of the HTML5 doctype. Without it, you’ll see some funky incomplete styling, but including it shouldn’t cause any considerable hiccups.</li>
+  <li>For improved cross-browser rendering, we use Reboot to correct inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.</li>
+        </artice>
+      </section>
+  <!-- end of Intro   -->
+
+    <section class="main-section" id="Community">
+      <header>Community</header>
+      <article>
+        <p>Stay up to date on the development of Bootstrap and reach out to the community with these helpful resources.</p>
+
+        <li>Follow @getbootstrap on Twitter.</li>
+        <li>Read and subscribe to The Official Bootstrap Blog.</li>
+  <li>Developers should use the keyword bootstrap on packages which modify or add to the functionality of Bootstrap when distributing through npm or similar delivery mechanisms for maximum discoverability.</li>
+        </artice>
+      </section>
+  <!-- end of Community -->
+
+    <section class="main-section" id="JavaScript">
+      <header>JavaScript</header>
+      <article>
+      <p>Bring Bootstrap to life with our optional JavaScript plugins built on jQuery. Learn about each plugin, our data and programmatic API options, and more.</p>
+  <h4>Individual or compiled</h4>
+  <p>Plugins can be included individually (using Bootstrap’s individual js/dist/*.js), or all at once using bootstrap.js or the minified bootstrap.min.js (don’t include both).<br><br>
+  If you use a bundler (Webpack, Rollup…), you can use /js/dist/*.js files which are UMD ready.</p>
+        <h4>Dependencies</h4>
+  <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included before the plugin files). Consult our package.json to see which versions of jQuery are supported.<br><br>
+  Our dropdowns, popovers and tooltips also depend on Popper.js.</p>
+      </article>
+      </section>
+  <!-- end of Javascript  -->
+    <section class="main-section" id="Data_attributes">
+      <header>Data attributes</header>
+      <article>
+  Nearly all Bootstrap plugins can be enabled and configured through HTML alone with data attributes (our preferred way of using JavaScript functionality). Be sure to only use one set of data attributes on a single element (e.g., you cannot trigger a tooltip and modal from the same button.)<br><br>
+  However, in some situations it may be desirable to disable this functionality. To disable the data attribute API, unbind all events on the document namespaced with data-api like so:
+        <code>
+          $(document).off('.data-api')
+        </code>
+  Alternatively, to target a specific plugin, just include the plugin’s name as a namespace along with the data-api namespace like this:
+        <code>
+          $(document).off('.alert.data-api')
+        </code>
+      </article>
+      </section>
+  <!-- end of Data attributes  -->
+    <section class="main-section" id="Via_data">
+      <header>Via data</header>
+      <p>
+  To easily add scrollspy behavior to your topbar navigation, add data-spy="scroll" to the element you want to spy on (most typically this would be the body). Then add the data-target attribute with the ID or class of the parent element of any Bootstrap .nav component.
+      </p>
+      <p>
+  After adding position: relative; in your CSS, call the scrollspy via JavaScript:
+      </p>
+      <code>
+        $('body').scrollspy({ target: '#navbar-example' })
+      </code>
+      <p>
+  When using scrollspy in conjunction with adding or removing of elements from the DOM, you’ll need to call the refresh method like so:
+      </p>
+     <code>
+       $('[data-spy="scroll"]').each(function () {
+    var $spy = $(this).scrollspy('refresh')
+  })    </code>
+      </section>
+  <!-- end of Via data  -->
+
+    <section class="main-section" id="Tooltips">
+      <header>Tooltips</header>
+      <article>
+  Documentation and examples for adding custom Bootstrap tooltips with CSS and JavaScript using CSS3 for animations and data-attributes for local title storage.
+        <p>
+        One way to initialize all tooltips on a page would be to select them by their data-toggle attribute:<code>$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })</code>
+        </p>
+        <h4>Usage</h4>
+        <p>
+          The tooltip plugin generates content and markup on demand, and by default places tooltips after their trigger element.<br><br>
+  Trigger the tooltip via JavaScript: <code>$('#example').tooltip(options)</code>
+        </p>
+        <h4>Tooltip (show)</h4>
+        <p>
+          Reveals an element’s tooltip. Returns to the caller before the tooltip has actually been shown (i.e. before the shown.bs.tooltip event occurs). This is considered a “manual” triggering of the tooltip. Tooltips with zero-length titles are never. <code>$('#element').tooltip('show')</code>
+        </p>
+      </article>
+      </section>
+  <!-- end of Tooltips  -->
+    <section class="main-section" id="Programmatic_api">
+      <header>Programmatic api</header>
+      <article>
+       <p> We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon. <code>$('.btn.danger').button('toggle').addClass('fat')</code></p>
+
+  <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
+  <code>$('#myModal').modal()                      // initialized with defaults
+  $('#myModal').modal({ keyboard: false })   // initialized with no keyboard
+  $('#myModal').modal('show')                // initializes and invokes show immediately</code>
+        <p>Each plugin also exposes its raw constructor on a Constructor property: $.fn.popover.Constructor. If you’d like to get a particular plugin instance, retrieve it directly from an element: $('[rel="popover"]').data('popover').</p>
+      </article>
+      </section>
+  <!-- end of Programmatic api   -->
+
+    <section class="main-section" id="Functions_and_transitions">
+      <header>Functions and transitions</header>
+      <article>
+  <p>All programmatic API methods are asynchronous and returns to the caller once the transition is started but before it ends.<br><br>
+  In order to execute an action once the transition is complete, you can listen to the corresponding event.</p>
+  <p>In addition a method call on a transitioning component will be ignored.</p>
+      </article>
+      </section>
+  <!-- end of Functions & Transitions -->
+
+    <section class="main-section" id="Modal">
+      <header>Modal</header>
+      <article>
+  <p>Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content.</p>
+  <h4>How it works</h4>
+  <p>Before getting started with Bootstrap’s modal component, be sure to read the following as our menu options have recently changed.</p>
+
+  <p>Modals are built with HTML, CSS, and JavaScript. They’re positioned over everything else in the document and remove scroll from the <body> so that modal content scrolls instead.</p>
+
+  <p>Bootstrap only supports one modal window at a time. Nested modals aren’t supported as we believe them to be poor user experiences.<br><br>
+    Due to how HTML5 defines its semantics, the autofocus HTML attribute has no effect in Bootstrap modals. To achieve the same effect, use some custom JavaScript:
+        </p>
+
+  <code>$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })</code>
+        More examples shown below:
+        <h4>.modal(show)</h4>
+        <p>Manually opens a modal. Returns to the caller before the modal has actually been shown (i.e. before the shown.bs.modal event occurs).</p> <code>$('#myModal').modal('show')</code>
+        <h4>.modal(hide)</h4>
+        <p>Manually hides a modal. Returns to the caller before the modal has actually been hidden (i.e. before the hidden.bs.modal event occurs).</p>
+        <code>$('#myModal').modal('hide')</code>
+        <h4>.modal('handleUpdate')</h4>
+        <p>Manually readjust the modal’s position if the height of a modal changes while it is open (i.e. in case a scrollbar appears).</p>
+        <code>$('#myModal').modal('handleUpdate')</code>
+      </article>
+      </section>
+  <!-- end of Modal -->
+
+    <section class="main-section" id="Popovers">
+      <header>Popovers</header>
+      <article>
+        <p>Documentation and examples for adding Bootstrap popovers, like those found in iOS, to any element on your site.</p>
+        <p>Things to know when using the popover plugin:</p>
+  <ul>
+    <li>Popovers rely on the 3rd party library Popper.js for positioning. You must include popper.min.js before bootstrap.js or use bootstrap.bundle.min.js / bootstrap.bundle.js which contains Popper.js in order for popovers to work!</li>
+  <li>Popovers require the tooltip plugin as a dependency.</li>
+    <li>If you’re building our JavaScript from source, it requires util.js.</li>
+  <li>Popovers are opt-in for performance reasons, so you must initialize them yourself.</li>
+    <li>Zero-length title and content values will never show a popover.</li>
+          <li>Specify container: 'body' to avoid rendering problems in more complex components (like our input groups, button groups, etc).</li>
+        <li>Triggering popovers on hidden elements will not work.</li></ul>
+        See example: <code>$(function () {
+    $('[data-toggle="popover"]').popover()
+  })</code>
+      </article>
+      </section>
+  <!-- end of Popovers -->
+
+    <section class="main-section" id="Package_managers">
+      <header>Package managers</header>
+      <article>
+  Pull in Bootstrap’s source files into nearly any project with some of the most popular package managers. No matter the package manager, Bootstrap will require a Sass compiler and Autoprefixer for a setup that matches our official compiled versions.<br><br>
+  Install Bootstrap in your Node.js powered apps with the npm package:
+  <code>$ npm install bootstrap</code>
+        <h4>RubyGems</h4>
+  <p>
+  Install Bootstrap in your Ruby apps using Bundler (recommended) and RubyGems by adding the following line to your Gemfile:</p>
+  <code>gem 'bootstrap', '~> 4.1.3'</code>
+  Alternatively, if you’re not using Bundler, you can install the gem by running this command:
+
+  <code> $ gem install bootstrap -v 4.1.3</code>
+        <h4>Composer</h4>
+  You can also install and manage Bootstrap’s Sass and JavaScript using Composer:
+  <code> $ composer require twbs/bootstrap:4.1.3</code>
+        <h4>NuGet</h4>
+  If you develop in .NET, you can also install and manage Bootstrap’s CSS or Sass and JavaScript using NuGet:
+
+  <code>PM> Install-Package bootstrap
+        PM> Install-Package bootstrap.sass</code>
+      </article>
+      </section>
+  <!-- end of Downloads -->
+
+    <section class="main-section" id="Theming">
+      <header>Theming</header>
+      <article>
+  In Bootstrap 3, theming was largely driven by variable overrides in LESS, custom CSS, and a separate theme stylesheet that we included in our dist files. With some effort, one could completely redesign the look of Bootstrap 3 without touching the core files. Bootstrap 4 provides a familiar, but slightly different approach.<br><br>
+  Now, theming is accomplished by Sass variables, Sass maps, and custom CSS. There’s no more dedicated theme stylesheet; instead, you can enable the built-in theme to add gradients, shadows, and more.
+  <h4>File structure</h4>
+        Whenever possible, avoid modifying Bootstrap’s core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you’re using a package manager like npm, you’ll have a file structure that looks like this:
+  <code>your-project/
+  ├── scss
+  │   └── custom.scss
+  └── node_modules/
+      └── bootstrap
+          ├── js
+          └── scss</code>
+  If you’ve downloaded our source files and aren’t using a package manager, you’ll want to manually setup something similar to that structure, keeping Bootstrap’s source files separate from your own. <code>your-project/
+  ├── scss
+  │   └── custom.scss
+  └── bootstrap/
+      ├── js
+      └── scss</code>
+        <h4>Importing</h4>
+  <p>In your custom.scss, you’ll import Bootstrap’s source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.</p>
+  Example:
+
+  <code>@import "../node_modules/bootstrap/scss/bootstrap";</code>
+        <code>// Custom.scss
+  // Option B: Include parts of Bootstrap
+
+  // Required
+  @import "../node_modules/bootstrap/scss/functions";
+  @import "../node_modules/bootstrap/scss/variables";
+  @import "../node_modules/bootstrap/scss/mixins";
+
+  // Optional
+  @import "../node_modules/bootstrap/scss/reboot";
+  @import "../node_modules/bootstrap/scss/type";
+  @import "../node_modules/bootstrap/scss/images";
+  @import "../node_modules/bootstrap/scss/code";
+  @import "../node_modules/bootstrap/scss/grid";</code>
+  <p>With that setup in place, you can begin to modify any of the Sass variables and maps in your custom.scss. You can also start to add parts of Bootstrap under the // Optional section as needed. We suggest using the full import stack from our bootstrap.scss file as your starting point.</p>
+  <h4>Required Keys</h4>
+        From the theme-colors for links, buttons, and forms states.
+  <li>Primary</li>
+  <li>Success</li>
+  <li>Danger</li>
+   <p>Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues. In these instances, you’ll need to modify the Sass code that makes use of those values.</p>
+      </article>
+      </section>
+  <!-- end of Theming   -->
+
+    <section class="main-section" id="Html_over_JS">
+      <header>Html over JS</header>
+      <article>
+  Whenever possible, we prefer to write HTML and CSS over JavaScript. In general, HTML and CSS are more prolific and accessible to more people of all different experience levels. HTML and CSS are also faster in your browser than JavaScript, and your browser generally provides a great deal of functionality for you.
+
+        <li>This principle is our first-class JavaScript API is data attributes. You don’t need to write nearly any JavaScript to use our JavaScript plugins; instead, write HTML. Read more about this in our JavaScript overview page.</li>
+        <li>Lastly, our styles build on the fundamental behaviors of common web elements. Whenever possible, we prefer to use what the browser provides. For example, you can put a .btn class on nearly any element, but most elements don’t provide any semantic value or browser functionality.</li>
+        <li>The same goes for more complex components. While we could write our own form validation plugin to add classes to a parent element based on an input’s state, thereby allowing us to style the text say red, we prefer using the :valid/:invalid pseudo-elements every browser provides us.</li>
+        <p>For example, the following code defines a simple function named square:</P>
+      </article>
+      </section>
+    <section class="main-section" id="Reference">
+      <header>Reference</header>
+      <article>
+        <li>All the documentation in this page is taken from <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>
+      </article>
+      </section>
+  </main>
+
+</body>
+</html>
